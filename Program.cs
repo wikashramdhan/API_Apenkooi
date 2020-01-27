@@ -19,6 +19,8 @@ namespace API_APENKOOI
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+            .UseKestrel()
+            .UseUrls("http://localhost:2806", "http://192.168.178.178:2806");
     }
 }

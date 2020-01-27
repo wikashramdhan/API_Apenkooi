@@ -38,7 +38,7 @@ namespace API_APENKOOI.Controllers
         }
 
         [HttpGet("Test/{id}")]
-        public ActionResult<Recipe> GetTest(int id)
+        public ActionResult<Recipe> GetTest(string id)
         {
             //Recipe recipe = new Recipe();
 
@@ -54,12 +54,12 @@ namespace API_APENKOOI.Controllers
             //return Ok(recipe);
             List<Recept> recepts = new List<Recept>();
             Recept r = new Recept();
-            r.id = id;
+            r.id = Convert.ToInt32( id);
             r.recipeDescription = "test";
 
             recepts.Add(r);
-            //string json = JsonConvert.SerializeObject(new { recipe = recepts });
-            return Ok(recepts);
+            string json = JsonConvert.SerializeObject(new { recipe = recepts });
+            return Ok(json);
 
         }
 
