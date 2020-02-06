@@ -48,6 +48,7 @@ namespace API_APENKOOI.Models
                 //    .Include(r => r.IngredientQuantities)
                 //        .ThenInclude(iq=> iq.QuantityType)
                 //    .ToListAsync();
+
                 var recipe = await context.Recipe.ToListAsync();
 
                 return recipe;

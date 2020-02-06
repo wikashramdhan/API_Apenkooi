@@ -50,14 +50,19 @@ namespace API_APENKOOI.Controllers
             //{
             //    return NotFound();
             //}
+            List<Recept> recepts = new List<Recept>();
+            
+
+            for (int i = 0; i < 10; i++ )
+            {
+                Recept r = new Recept();
+                r.id = i.ToString();
+                r.recipeDescription = i.ToString();
+                recepts.Add(r);
+            }
 
             //return Ok(recipe);
-            List<Recept> recepts = new List<Recept>();
-            Recept r = new Recept();
-            r.id = Convert.ToInt32( id);
-            r.recipeDescription = "test";
 
-            recepts.Add(r);
             string json = JsonConvert.SerializeObject(new { recipe = recepts });
             return Ok(json);
 
@@ -66,16 +71,19 @@ namespace API_APENKOOI.Controllers
         [HttpGet]
         public async Task<ActionResult<Recipe>> Get()
         {
-            var recipe = await _contentRepository.GetAll();
-
-            if (recipe == null)
+            //var recipe = await _contentRepository.GetAll();
+            IEnumerable<Recipe> r = await _contentRepository.GetAll();
+            if (r == null)
             {
                 return NotFound();
             }
+            
+
 
             //JsonResult json = recipe;
+            string json = JsonConvert.SerializeObject(new { recipe = r });
+            return Ok(json);
 
-            return Ok(recipe);
         }
 
         [HttpPost]
@@ -102,7 +110,7 @@ namespace API_APENKOOI.Controllers
 
         public class Recept
         {
-            public int id { get; set; }
+            public string id { get; set; }
             public string recipeDescription { get; set; }
         }
     }
