@@ -62,7 +62,17 @@ namespace API_APENKOOI.Models
 
         public Recipe Get(int id)
         {
-            return context.Recipe.Find(id);
+            //Recipe r = context.Recipe.Find(id);
+            //r.RecipeType = context.RecipeType.Find(r.RecipeTypeId);
+            Recipe recipe = context.Recipe.Include(r => r.RecipeType)
+                                   .Include(r => r.IngredientQuantities)
+                                   .ThenInclude(i => i.Ingredient)
+                                   .Include(r => r.IngredientQuantities)
+                                   .ThenInclude(i => i.QuantityType)
+                                   .FirstOrDefault(re => re.Id == id);
+
+            
+            return recipe;
         }
 
         public Recipe Update(Recipe contentChanges)
