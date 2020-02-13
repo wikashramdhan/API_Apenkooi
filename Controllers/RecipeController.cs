@@ -27,14 +27,18 @@ namespace API_APENKOOI.Controllers
         [HttpGet("{id}")]
         public ActionResult<Recipe> Get(int id)
         {
-            var recipe = _contentRepository.Get(id);
+            var r = _contentRepository.Get(id);
 
-            if (recipe == null)
+            if (r == null)
             {
                 return NotFound();
             }
 
-            return recipe;
+            string json = JsonConvert.SerializeObject(new { recipe = r });
+
+
+
+            return Ok(json);
         }
 
         [HttpGet("Test/{id}")]

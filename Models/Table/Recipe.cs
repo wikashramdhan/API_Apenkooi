@@ -10,6 +10,7 @@ namespace API_APENKOOI.Models
     public class Recipe
     {
         public int Id { get; set; }
+        public string RecipeName { get; set; }
         public string RecipeDescription { get; set; }
         public int? HowManyPersons { get; set; }
         public int? TimeCreated { get; set; }
