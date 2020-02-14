@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace API_APENKOOI.Models
         public virtual QuantityType QuantityType { get; set; }
         public int RecipeId { get; set; }
         [ForeignKey("RecipeId")]
+        [JsonIgnore]
         public virtual Recipe Recipe { get; set; }
     }
 }
