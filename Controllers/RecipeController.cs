@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using API_APENKOOI.Models;
 using Microsoft.AspNetCore.Authorization;
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace API_APENKOOI.Controllers
 {
@@ -33,10 +33,7 @@ namespace API_APENKOOI.Controllers
             {
                 return NotFound();
             }
-
-            string json = JsonConvert.SerializeObject(new { recipe = r });
-
-
+            string json = JsonSerializer.Serialize(new { recipe = r });
 
             return Ok(json);
         }
@@ -67,8 +64,8 @@ namespace API_APENKOOI.Controllers
 
             //return Ok(recipe);
 
-            string json = JsonConvert.SerializeObject(new { recipe = recepts });
-            return Ok(json);
+            //string json = JsonConvert.SerializeObject(new { recipe = recepts });
+            return Ok(recepts);
 
         }
 
@@ -81,11 +78,12 @@ namespace API_APENKOOI.Controllers
             {
                 return NotFound();
             }
-            
+
 
 
             //JsonResult json = recipe;
-            string json = JsonConvert.SerializeObject(new { recipe = r });
+            //string json = JsonConvert.SerializeObject(new { recipe = r });
+            string json = JsonSerializer.Serialize(new { recipe = r });
             return Ok(json);
 
         }
