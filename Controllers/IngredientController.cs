@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using API_APENKOOI.Models;
+using API_APENKOOI.Models.Table;
+using API_APENKOOI.Models.InterfaceRepository;
 
 namespace API_APENKOOI.Controllers
 {

@@ -1,51 +1,53 @@
-﻿using System;
+﻿using API_APENKOOI.Models.InterfaceRepository;
+using API_APENKOOI.Models.Table;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace API_APENKOOI.Models
+namespace API_APENKOOI.Models.Repository
 {
     public class IngredientRepository : IIngredientRepository
     {
-        private readonly Context context;
+        private readonly Context _context;
         public IngredientRepository(Context context)
         {
-            this.context = context;
+            _context = context;
         }
         public Ingredient Add(Ingredient conent)
         {
-            context.Ingredient.Add(conent);
-            context.SaveChanges();
+            _context.Ingredient.Add(conent);
+            _context.SaveChanges();
             return conent;
         }
 
         public Ingredient Delete(int id)
         {
-            Ingredient conent = context.Ingredient.Find(id);
+            Ingredient conent = _context.Ingredient.Find(id);
             if (conent != null)
             {
-                context.Ingredient.Remove(conent);
-                context.SaveChanges();
+                _context.Ingredient.Remove(conent);
+                _context.SaveChanges();
             }
             return conent;
         }
 
         public IEnumerable<Ingredient> GetAll()
         {
-            return context.Ingredient;
+            return _context.Ingredient;
         }
 
 
         public Ingredient Get(int id)
         {
-            return context.Ingredient.Find(id);
+            return _context.Ingredient.Find(id);
         }
 
         public Ingredient Update(Ingredient contentChanges)
         {
-            var Ingredient = context.Ingredient.Attach(contentChanges);
+            var Ingredient = _context.Ingredient.Attach(contentChanges);
             Ingredient.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            context.SaveChanges();
+            _context.SaveChanges();
             return contentChanges;
         }
     }

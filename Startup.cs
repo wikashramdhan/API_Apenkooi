@@ -13,6 +13,8 @@ using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Proxies;
 using Microsoft.Extensions.Hosting;
+using API_APENKOOI.Models.InterfaceRepository;
+using API_APENKOOI.Models.Repository;
 
 namespace API_APENKOOI
 {
@@ -32,6 +34,7 @@ namespace API_APENKOOI
             services.AddMvc(option => option.EnableEndpointRouting = false);
             services.AddScoped<IRecipeRepository, RecipeRepository>();
             services.AddScoped<IIngredientRepository, IngredientRepository>();
+            services.AddScoped<IRecipeTypeRepository, RecipeTypeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +44,9 @@ namespace API_APENKOOI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            // To use static files and set the default page
+            app.UseFileServer();
 
             app.UseMvc();
 

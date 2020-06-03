@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace API_APENKOOI.Models
+namespace API_APENKOOI.Models.Table
 {
     public class IngredientQuantity
     {

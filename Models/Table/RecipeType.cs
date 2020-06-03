@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace API_APENKOOI.Models
+namespace API_APENKOOI.Models.Table
 {
     public class RecipeType
     {

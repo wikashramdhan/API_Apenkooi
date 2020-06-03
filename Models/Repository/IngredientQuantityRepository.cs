@@ -1,9 +1,11 @@
-﻿using System;
+﻿using API_APENKOOI.Models.InterfaceRepository;
+using API_APENKOOI.Models.Table;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace API_APENKOOI.Models
+namespace API_APENKOOI.Models.Repository
 {
     public class IngredientQuantityRepository : IIngredientQuantityRepository
     {

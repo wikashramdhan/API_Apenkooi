@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace API_APENKOOI.Models
+namespace API_APENKOOI.Models.Table
 {
     public class Recipe
     {
