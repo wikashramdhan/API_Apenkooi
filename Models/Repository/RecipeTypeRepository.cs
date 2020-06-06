@@ -16,7 +16,7 @@ namespace API_APENKOOI.Models.Repository
         {
             _context = context;
         }
-        public async Task <IEnumerable<RecipeType>> GetAll()
+        public async Task <List<RecipeType>> GetAll()
         {
             var recipeType = await _context.RecipeType.ToListAsync();
 

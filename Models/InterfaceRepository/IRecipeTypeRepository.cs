@@ -8,6 +8,6 @@ namespace API_APENKOOI.Models.InterfaceRepository
 {
     public interface IRecipeTypeRepository
     {
-        Task<IEnumerable<RecipeType>> GetAll();
+        Task<List<RecipeType>> GetAll();
     }
 }

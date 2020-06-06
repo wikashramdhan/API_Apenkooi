@@ -17,12 +17,12 @@ namespace API_APENKOOI.Controllers
     //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class RecipesController : ControllerBase
+    public class RecipeController : ControllerBase
     {
         private readonly IRecipeRepository _recipeRepository;
         private readonly IRecipeTypeRepository _recipeTypeRepository;
 
-        public RecipesController(IRecipeRepository recipeRepository, IRecipeTypeRepository recipeTypeRepository)
+        public RecipeController(IRecipeRepository recipeRepository, IRecipeTypeRepository recipeTypeRepository)
         {
             _recipeRepository = recipeRepository;
             this._recipeTypeRepository = recipeTypeRepository;
@@ -114,22 +114,15 @@ namespace API_APENKOOI.Controllers
             }
         }
 
-        [HttpGet]
-        public async Task<ActionResult<RecipeType>> GetAllRecipeType()
+        [HttpGet("GetAllRecipeTypes")]
+        public async Task<ActionResult<RecipeType>> GetAllRecipeTypes()
         {
-            //var recipe = await _contentRepository.GetAll();
-            IEnumerable<RecipeType> r = await _recipeTypeRepository.GetAll();
-            if (r == null)
-            {
-                return NotFound();
-            }
+            List<RecipeType> r = await _recipeTypeRepository.GetAll();
 
+            string json = JsonSerializer.Serialize(new { RecipeType = r });
 
-
-            //JsonResult json = recipe;
-            //string json = JsonConvert.SerializeObject(new { recipe = r });
-            string json = JsonSerializer.Serialize(new { recipe = r });
             return Ok(json);
+            
 
         }
 
