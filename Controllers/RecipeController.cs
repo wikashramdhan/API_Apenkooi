@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -45,38 +44,24 @@ namespace API_APENKOOI.Controllers
         [HttpGet("Test/{id}")]
         public ActionResult<Recipe> GetTest(string id)
         {
-            //Recipe recipe = new Recipe();
 
-
-            //recipe.Id = id;
-            //recipe.RecipeDescription = "Test " + id;
-
-            //if (recipe == null)
-            //{
-            //    return NotFound();
-            //}
-            List<Recept> recepts = new List<Recept>();
+            var recepts = new List<Recept>();
             
 
             for (int i = 0; i < 10; i++ )
             {
-                Recept r = new Recept();
+                var r = new Recept();
                 r.id = i.ToString();
                 r.recipeDescription = i.ToString();
                 recepts.Add(r);
             }
 
-            //return Ok(recipe);
-
-            //string json = JsonConvert.SerializeObject(new { recipe = recepts });
             return Ok(recepts);
-
         }
 
         [HttpGet]
         public async Task<ActionResult<Recipe>> Get()
         {
-            //var recipe = await _contentRepository.GetAll();
             IEnumerable<Recipe> r = await _recipeRepository.GetAll();
             if (r == null)
             {
@@ -84,9 +69,6 @@ namespace API_APENKOOI.Controllers
             }
 
 
-
-            //JsonResult json = recipe;
-            //string json = JsonConvert.SerializeObject(new { recipe = r });
             string json = JsonSerializer.Serialize(new { recipe = r });
             return Ok(json);
 
@@ -122,8 +104,6 @@ namespace API_APENKOOI.Controllers
             string json = JsonSerializer.Serialize(new { RecipeType = r });
 
             return Ok(json);
-            
-
         }
 
         public class Recept

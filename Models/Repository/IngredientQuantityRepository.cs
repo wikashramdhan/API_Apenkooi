@@ -34,10 +34,10 @@ namespace API_APENKOOI.Models.Repository
 
         public List<IngredientQuantity> GetAll()
         {
-            List<IngredientQuantity> lstIngredientQuantities = new List<IngredientQuantity>();
+            var lstIngredientQuantities = new List<IngredientQuantity>();
             foreach (IngredientQuantity i in context.IngredientQuantity)
             {
-                IngredientQuantity ingredientQuantity = new IngredientQuantity();
+                var ingredientQuantity = new IngredientQuantity();
                 i.id = ingredientQuantity.id;
                 i.Ingredient = Get(ingredientQuantity.id).Ingredient;
                 i.Amount = ingredientQuantity.Amount;

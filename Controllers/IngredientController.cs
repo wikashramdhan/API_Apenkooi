@@ -46,7 +46,7 @@ namespace API_APENKOOI.Controllers
                 return NotFound();
             }
 
-            return Ok(new { results = Ingredient });
+            return Ok(new { Ingredient = Ingredient });
         }
 
         [HttpPost]
